@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Barrio Digital | Plataforma de Negocios</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+font-family:'Montserrat',sans-serif;
+background:#030712;
+color:#fff;
+overflow-x:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%, rgba(0,255,200,.18), transparent 30%),
+radial-gradient(circle at 80% 10%, rgba(0,120,255,.22), transparent 35%),
+radial-gradient(circle at 50% 90%, rgba(212,175,55,.16), transparent 35%);
+z-index:-2;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background-image:linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+background-size:55px 55px;
+z-index:-1;
+}
+
+section{
+padding:90px 8%;
+max-width:1450px;
+margin:auto;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+}
+
+.logo{
+font-family:'Orbitron',sans-serif;
+font-size:18px;
+letter-spacing:5px;
+color:#00ffd5;
+margin-bottom:25px;
+}
+
+h1{
+font-family:'Orbitron',sans-serif;
+font-size:70px;
+line-height:1.05;
+margin:0;
+background:linear-gradient(90deg,#00ffd5,#ffffff,#d4af37);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+h2{
+font-family:'Orbitron',sans-serif;
+font-size:38px;
+text-align:center;
+color:#00ffd5;
+margin-bottom:20px;
+}
+
+h3{
+color:#d4af37;
+font-size:24px;
+}
+
+p{
+font-size:18px;
+line-height:1.8;
+color:rgba(255,255,255,.82);
+}
+
+.sub{
+font-size:22px;
+max-width:950px;
+margin:25px auto;
+}
+
+.btn{
+display:inline-block;
+padding:16px 34px;
+border-radius:40px;
+text-decoration:none;
+font-weight:700;
+margin:10px;
+background:#00ffd5;
+color:#03110f;
+box-shadow:0 0 25px rgba(0,255,213,.35);
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-4px) scale(1.03);
+box-shadow:0 0 45px rgba(0,255,213,.6);
+}
+
+.btn.gold{
+background:#d4af37;
+color:#080808;
+box-shadow:0 0 25px rgba(212,175,55,.35);
+}
+
+.btn.dark{
+background:transparent;
+color:#fff;
+border:1px solid rgba(255,255,255,.35);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.card{
+background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.03));
+border:1px solid rgba(255,255,255,.15);
+border-radius:26px;
+padding:35px;
+backdrop-filter:blur(18px);
+box-shadow:0 25px 60px rgba(0,0,0,.35);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:#00ffd5;
+box-shadow:0 0 45px rgba(0,255,213,.18);
+}
+
+.zone{
+text-align:center;
+font-family:'Orbitron',sans-serif;
+font-size:20px;
+color:#fff;
+}
+
+.zone span{
+display:block;
+font-size:36px;
+margin-bottom:10px;
+}
+
+.steps{
+counter-reset:item;
+}
+
+.step{
+position:relative;
+padding-left:65px;
+}
+
+.step::before{
+counter-increment:item;
+content:"0" counter(item);
+position:absolute;
+left:0;
+top:30px;
+font-family:'Orbitron';
+color:#00ffd5;
+font-size:26px;
+}
+
+.form-box{
+max-width:900px;
+margin:40px auto 0;
+}
+
+input, select, textarea{
+width:100%;
+padding:16px;
+margin:10px 0;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.18);
+background:rgba(255,255,255,.08);
+color:white;
+font-size:16px;
+}
+
+input::placeholder, textarea::placeholder{
+color:rgba(255,255,255,.55);
+}
+
+select option{
+color:#111;
+}
+
+textarea{
+min-height:120px;
+}
+
+.footer{
+text-align:center;
+padding:60px 20px;
+background:#02050c;
+border-top:1px solid rgba(0,255,213,.2);
+}
+
+.glow-line{
+height:1px;
+background:linear-gradient(90deg,transparent,#00ffd5,#d4af37,transparent);
+margin:60px auto;
+max-width:900px;
+}
+
+.mapa-futurista{
+
+padding:90px 40px;
+margin:80px auto;
+max-width:1400px;
+
+background:
+linear-gradient(
+135deg,
+#021421,
+#06283d,
+#0a3d62
+);
+
+border-radius:30px;
+
+text-align:center;
+
+box-shadow:
+0 0 30px rgba(0,255,255,.12),
+0 0 80px rgba(0,180,255,.08);
+
+}
+
+.mapa-futurista h2{
+
+color:#00e5ff;
+font-size:48px;
+margin-bottom:20px;
+
+}
+
+.mapa-futurista p{
+
+max-width:900px;
+margin:auto;
+color:white;
+font-size:20px;
+line-height:1.8;
+margin-bottom:40px;
+
+}
+
+@media(max-width:768px){
+h1{font-size:42px}
+h2{font-size:28px}
+section{padding:70px 6%}
+}
+
+.mapa-futurista{
+
+background:
+linear-gradient(
+rgba(0,10,20,.75),
+rgba(0,20,40,.85)
+),
+url('images/mapa-futurista.jpg');
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+padding:120px 50px;
+border-radius:30px;
+margin-top:50px;
+
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<div>
+<div class="logo">BARRIO DIGITAL</div>
+
+<h1>El Futuro de los Negocios Locales</h1>
+
+<p class="sub">
+Creamos presencia digital para negocios, emprendedores, profesionales e inmobiliarias.
+Conectamos personas con marcas reales en Tepic, Puerto Vallarta, Bahía de Banderas y Riviera Nayarit.
+</p>
+
+<a href="#perfil" class="btn">Quiero mi perfil</a>
+<a href="#info" class="btn gold">Quiero más información</a>
+<a href="https://barriodigitaltepic-ui.github.io/barrio-digital-platform/" target="_blank" class="btn dark">Conoce Barrio Digital</a>
+</div>
+</section>
+
+<section>
+<h2>¿Qué es Barrio Digital?</h2>
+
+<div class="card">
+<p>
+Barrio Digital es una plataforma creada para dar visibilidad a negocios, servicios, emprendedores, profesionales e inmobiliarias mediante perfiles digitales, páginas web, directorios especializados, campañas de promoción y presencia en redes sociales.
+</p>
+<p>
+Nuestro objetivo es que cada negocio pueda ser encontrado, presentado y contactado de manera profesional desde cualquier celular.
+</p>
+</div>
+</section>
+
+<section>
+<h2>¿Qué hacemos?</h2>
+
+<div class="grid">
+<div class="card"><h3>🌐 Páginas Web</h3><p>Diseñamos páginas de presentación para negocios, propiedades, servicios y desarrollos.</p></div>
+<div class="card"><h3>📱 Perfiles Digitales</h3><p>Creamos perfiles dentro de Barrio Digital con información, contacto, fotos y ubicación.</p></div>
+<div class="card"><h3>📍 Directorio Local</h3><p>Integramos negocios en una plataforma organizada por categorías y zonas.</p></div>
+<div class="card"><h3>📈 Promoción Digital</h3><p>Apoyamos la difusión mediante publicaciones, campañas, QR y estrategias de visibilidad.</p></div>
+<div class="card"><h3>🏡 Inmobiliario</h3><p>Promoción de propiedades, asesores, desarrollos, terrenos y oportunidades de inversión.</p></div>
+<div class="card"><h3>🛍️ Emprendedores</h3><p>Moda, accesorios, belleza, catálogo, comida, servicios y marcas personales.</p></div>
+</div>
+</section>
+
+<section>
+<h2>¿Dónde estaremos presentes?</h2>
+
+<div class="grid">
+<div class="card zone"><span>📍</span>Tepic</div>
+<div class="card zone"><span>📍</span>Xalisco</div>
+<div class="card zone"><span>📍</span>Ixtapa, Jalisco</div>
+<div class="card zone"><span>📍</span>El Pitillal</div>
+<div class="card zone"><span>📍</span>Puerto Vallarta</div>
+<div class="card zone"><span>📍</span>Bahía de Banderas</div>
+<div class="card zone"><span>📍</span>Nuevo Nayarit</div>
+<div class="card zone"><span>📍</span>Riviera Nayarit</div>
+</div>
+</section>
+
+<section class="mapa-futurista">
+
+<h2>Red Digital Regional</h2>
+
+<p>
+Barrio Digital conecta negocios, emprendedores,
+profesionistas, inmobiliarias y empresas entre
+Tepic, Xalisco, Puerto Vallarta, Bahía de Banderas,
+Nuevo Nayarit, Riviera Nayarit, Ixtapa y El Pitillal.
+</p>
+
+<img src="images/mapa-futurista.png"
+alt="Mapa Futurista Barrio Digital"
+style="
+max-width:100%;
+border-radius:25px;
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+margin-top:30px;
+">
+
+</section>
+
+<section>
+<h2>Nuestra Meta</h2>
+
+<div class="card">
+<p>
+Construir una red digital donde los negocios locales puedan competir con una imagen profesional, sin depender únicamente de publicaciones que se pierden en redes sociales.
+</p>
+<p>
+Queremos que cada negocio tenga un lugar propio donde pueda mostrar quién es, qué ofrece, dónde se encuentra y cómo contactarlo.
+</p>
+</div>
+</section>
+
+<section>
+<h2>¿Cómo lo haremos posible?</h2>
+
+<div class="grid steps">
+<div class="card step"><h3>Perfil Digital</h3><p>Creamos una presentación profesional para tu negocio.</p></div>
+<div class="card step"><h3>Directorio</h3><p>Tu negocio aparece dentro de una plataforma organizada y fácil de explorar.</p></div>
+<div class="card step"><h3>QR Promocional</h3><p>Generamos accesos rápidos para compartir tu perfil desde anuncios, tarjetas o publicaciones.</p></div>
+<div class="card step"><h3>Redes Sociales</h3><p>Impulsamos la visibilidad mediante Facebook, Instagram, comentarios y publicaciones.</p></div>
+<div class="card step"><h3>Campañas</h3><p>Promocionamos categorías, negocios y perfiles dentro de zonas estratégicas.</p></div>
+<div class="card step"><h3>Comunidad</h3><p>Conectamos consumidores, empresas, asesores, emprendedores y servicios locales.</p></div>
+</div>
+</section>
+
+<section>
+<h2>Tipos de perfil</h2>
+
+<div class="grid">
+<div class="card"><h3>Emprendedor</h3><p>Ropa, accesorios, ventas por catálogo, paca, belleza, detalles y productos locales.</p></div>
+<div class="card"><h3>Negocio Local</h3><p>Restaurantes, ferreterías, talleres, tiendas, servicios y comercios.</p></div>
+<div class="card"><h3>Profesional</h3><p>Abogados, médicos, arquitectos, consultores, especialistas y asesores.</p></div>
+<div class="card"><h3>Inmobiliario</h3><p>Propiedades, terrenos, desarrollos, asesores y firmas inmobiliarias.</p></div>
+<div class="card"><h3>Empresa</h3><p>Marcas, constructoras, servicios especializados y negocios establecidos.</p></div>
+</div>
+</section>
+
+<div class="glow-line"></div>
+
+<section id="info">
+<h2>Quiero más información</h2>
+
+<div class="card form-box">
+<input id="infoNombre" placeholder="Nombre completo">
+<input id="infoWhatsapp" placeholder="Celular / WhatsApp">
+<input id="infoCorreo" placeholder="Correo electrónico">
+<input id="infoCiudad" placeholder="Ciudad">
+<textarea id="infoMensaje" placeholder="Cuéntanos qué necesitas"></textarea>
+
+<a class="btn gold" href="#" onclick="enviarInfo()">Enviar por WhatsApp</a>
+</div>
+</section>
+
+<section id="perfil">
+<h2>Quiero mi perfil</h2>
+
+<div class="card form-box">
+<input id="perfilNombre" placeholder="Nombre completo">
+<input id="perfilWhatsapp" placeholder="Celular / WhatsApp">
+<input id="perfilEmpresa" placeholder="Nombre del negocio o empresa">
+<input id="perfilGiro" placeholder="Giro del negocio">
+<input id="perfilCiudad" placeholder="Ciudad">
+
+<select id="perfilTipo">
+<option value="">Selecciona tipo de perfil</option>
+<option>Emprendedor</option>
+<option>Negocio Local</option>
+<option>Profesional</option>
+<option>Inmobiliario</option>
+<option>Empresa</option>
+</select>
+
+<textarea id="perfilRedes" placeholder="Facebook, Instagram, página web o links disponibles"></textarea>
+
+<a class="btn" href="#" onclick="enviarPerfil()">Solicitar mi perfil</a>
+</div>
+</section>
+
+<section>
+<h2>Conoce Barrio Digital</h2>
+
+<div class="card" style="text-align:center;">
+<p>
+Explora la plataforma y descubre cómo se verán los negocios, categorías, perfiles y oportunidades dentro de Barrio Digital.
+</p>
+
+<a href="https://barriodigitaltepic-ui.github.io/barrio-digital-platform/" target="_blank" class="btn gold">
+Entrar a Barrio Digital
+</a>
+</div>
+</section>
+
+<div class="footer">
+<strong>BARRIO DIGITAL</strong><br>
+Conectando negocios, personas y oportunidades.<br>
+Tepic • Puerto Vallarta • Bahía de Banderas • Riviera Nayarit
+</div>
+
+<script>
+function enviarInfo(){
+const nombre=document.getElementById("infoNombre").value;
+const whatsapp=document.getElementById("infoWhatsapp").value;
+const correo=document.getElementById("infoCorreo").value;
+const ciudad=document.getElementById("infoCiudad").value;
+const mensaje=document.getElementById("infoMensaje").value;
+
+const texto=`Hola, quiero más información sobre Barrio Digital.%0A%0ANombre: ${nombre}%0AWhatsApp: ${whatsapp}%0ACorreo: ${correo}%0ACiudad: ${ciudad}%0AMensaje: ${mensaje}`;
+
+window.open(`https://wa.me/523113392436?text=${texto}`,'_blank');
+}
+
+function enviarPerfil(){
+const nombre=document.getElementById("perfilNombre").value;
+const whatsapp=document.getElementById("perfilWhatsapp").value;
+const empresa=document.getElementById("perfilEmpresa").value;
+const giro=document.getElementById("perfilGiro").value;
+const ciudad=document.getElementById("perfilCiudad").value;
+const tipo=document.getElementById("perfilTipo").value;
+const redes=document.getElementById("perfilRedes").value;
+
+const texto=`Hola, quiero mi perfil en Barrio Digital.%0A%0ANombre: ${nombre}%0AWhatsApp: ${whatsapp}%0ANegocio: ${empresa}%0AGiro: ${giro}%0ACiudad: ${ciudad}%0ATipo de perfil: ${tipo}%0ARedes o links: ${redes}`;
+
+window.open(`https://wa.me/523113392436?text=${texto}`,'_blank');
+}
+</script>
+
+</body>
+</html>
